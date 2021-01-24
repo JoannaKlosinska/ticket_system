@@ -1,7 +1,7 @@
 # README
 
-Rails API ticketing system application.
-Ruby 2.7.1
+Rails API ticketing system application. <br>
+Ruby 2.7.1 <br>
 Rails 6.0.3.4
 
 ## Getting started
