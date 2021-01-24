@@ -3,5 +3,5 @@ class Event < ApplicationRecord
   validates :date, presence: true
   validates :time, presence: true
 
-  has_many: tickets, dependent: :destroy
+  has_many :tickets
 end

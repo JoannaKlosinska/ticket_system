@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'events#show'
-
-  resources :events, only: [:show]
+  resources :events, only: [:show] do
+    resources :tickets, only: [:show, :create]
+  end
 end
