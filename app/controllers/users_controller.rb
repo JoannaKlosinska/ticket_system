@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :find_user
+  before_action :find_user, only: [:edit, :update, :show, :destroy]
+  skip_before_action :authorize_request, only: [:new, :create]
 
   def show
     json_response(@user)
@@ -10,11 +11,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user.params)
+    @user = User.new(user_params)
+
     if @user.save
       json_response(@user, :created)
     else 
       bad_request
+    end
   end
 
   def edit
@@ -37,6 +40,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password_digest)
+    params.require(:user).permit(:name, :email, :password)
   end
 end
