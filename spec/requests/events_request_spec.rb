@@ -1,14 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe 'Events', type: :request do
-  fixtures(:events)
+  fixtures(:events, :users)
 
   describe 'GET #show' do
+    let(:user) { users(:mike) }
+
     context 'when event exists' do
       let(:event) { events(:one) }
 
       before do
-        get "/events/#{event.id}"
+        get("/events/#{event.id}", headers: { 'Authorization' => auth_token(user) })
       end
 
       it 'returns status code 200' do
@@ -23,7 +25,7 @@ RSpec.describe 'Events', type: :request do
 
     context 'when event does not exist' do
       before do
-        get '/events/1'
+        get("/events/1", headers: { 'Authorization' => auth_token(user) })
       end
 
       it 'returns status code 404' do
