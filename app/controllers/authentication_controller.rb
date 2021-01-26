@@ -6,7 +6,7 @@ class AuthenticationController < ApplicationController
 
     if user&.authenticate(params[:password])
       token = JsonWebToken.encode({ user_id: user.id })
-      json_response(token) # render json: { token: token }, status: :ok
+      json_response({ token: token })
     else
       unauthorized
     end
