@@ -2,7 +2,8 @@
 
 Rails API ticketing system application. <br>
 Ruby 2.7.1 <br>
-Rails 6.0.3.4
+Rails 6.0.3.4 <br>
+SQLite3
 
 ## Getting started
 To get started with the app, clone the repo and then install the needed gems:
